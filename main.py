@@ -1,7 +1,6 @@
 import os
 import flet as ft
 import flet_video as ftv
-import threading
 
 def main(page: ft.Page):
 
@@ -471,7 +470,7 @@ def main(page: ft.Page):
         ),
     )
 
-    # 6. Technical Blog Section - Single Video Section
+    # 6. Technical Blog Section - Single Video Section (FIXED)
     blog_section = ft.Container(
         key="blog",
         bgcolor=LIGHT_BG,
@@ -505,22 +504,30 @@ def main(page: ft.Page):
                                 ])
                             ),
                             
-                            # Embedded Video - Using your reflection video
+                            # Embedded Video - Using flet_video with correct attributes
                             ft.Container(
                                 height=400,
-                                width=700,
+                                width=None,
+                                expand=True,
                                 border_radius=8,
                                 clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
                                 bgcolor=PRIMARY_BLUE,
                                 content=ftv.Video(
                                     expand=True,
-                                    autoplay=False,
                                     playlist=[
                                         ftv.VideoMedia(
-                                            "assets/video/reflection-video.mp4"  # Your video file
+                                            "assets/video/reflection-video.mp4.mp4"  # Your video file path
                                         )
                                     ],
+                                    playlist_mode=ftv.PlaylistMode.LOOP,
+                                    fill_color=ACCENT_TEAL,
+                                    aspect_ratio=16/9,
+                                    volume=100,
+                                    autoplay=False,
                                     show_controls=True,
+                                    filter_quality=ft.FilterQuality.HIGH,
+                                    muted=False,
+                                    wakelock=True,
                                 ),
                             ),
                             ft.Text("Watch this reflection video to understand my project management journey with the Group6 ChecklistApp team.", color=TEXT_GREY, size=12, italic=True),
