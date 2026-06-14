@@ -517,7 +517,7 @@ def main(page: ft.Page):
                                     autoplay=False,
                                     playlist=[
                                         ftv.VideoMedia(
-                                            "assets/video/reflection-video.mp4.mp4"  # Your video file
+                                            "assets/video/reflection-video.mp4"  # Your video file
                                         )
                                     ],
                                     show_controls=True,
