@@ -1,13 +1,7 @@
 import os
 import flet as ft
+import flet_video as ftv
 import threading
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv()
-
-# Get port from environment variable (Render sets this)
-PORT = int(os.getenv("PORT", 8551))
 
 def main(page: ft.Page):
 
@@ -477,7 +471,7 @@ def main(page: ft.Page):
         ),
     )
 
-    # 6. Technical Blog Section with videos
+    # 6. Technical Blog Section with videos using flet_video
     blog_section = ft.Container(
         key="blog",
         bgcolor=LIGHT_BG,
@@ -506,21 +500,22 @@ def main(page: ft.Page):
                             ),
                             ft.Text("Where Q is airflow (m³/s), A is cross-sectional area (m²), v is air velocity (m/s), P is pressure (Pa), ρ is air density (kg/m³), g is gravity (m/s²), and h is height difference (m).", color=TEXT_GREY, size=13),
                             
-                            # Embedded Video
+                            # Embedded Video using flet_video
                             ft.Container(
-                                height=250,
+                                height=315,
+                                width=560,
                                 border_radius=8,
                                 clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
                                 bgcolor=PRIMARY_BLUE,
-                                content=ft.Video(
-                                    playlist=ft.VideoMedia(
-                                        src="https://www.youtube.com/watch?v=7d9KfKQ-4rM",
-                                        title="Mine Ventilation Principles Explained"
-                                    ),
-                                    autoplay=False,
-                                    show_controls=True,
-                                    aspect_ratio=16/9,
+                                content=ftv.Video(
                                     expand=True,
+                                    autoplay=False,
+                                    playlist=[
+                                        ftv.VideoMedia(
+                                            "assets/video/mine_ventilation.mp4"  # Place your video file here
+                                        )
+                                    ],
+                                    show_controls=True,
                                 ),
                             ),
                             ft.Text("Watch this video to understand how mine ventilation systems work and why they're crucial for underground safety.", color=TEXT_GREY, size=12, italic=True),
@@ -547,21 +542,22 @@ def main(page: ft.Page):
                             ),
                             ft.Text("Comprehensive testing strategies include unit testing, integration testing, user acceptance testing, and regression testing for reliable safety features.", color=TEXT_GREY, size=13),
                             
-                            # Embedded Video
+                            # Embedded Video using flet_video
                             ft.Container(
-                                height=250,
+                                height=315,
+                                width=560,
                                 border_radius=8,
                                 clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
                                 bgcolor=PRIMARY_BLUE,
-                                content=ft.Video(
-                                    playlist=ft.VideoMedia(
-                                        src="https://www.youtube.com/watch?v=4f7LpW2bP7w",
-                                        title="Software Testing Best Practices for Safety Systems"
-                                    ),
-                                    autoplay=False,
-                                    show_controls=True,
-                                    aspect_ratio=16/9,
+                                content=ftv.Video(
                                     expand=True,
+                                    autoplay=False,
+                                    playlist=[
+                                        ftv.VideoMedia(
+                                            "assets/video/software_testing.mp4"  # Place your video file here
+                                        )
+                                    ],
+                                    show_controls=True,
                                 ),
                             ),
                             ft.Text("Learn about software testing methodologies essential for safety-critical applications like the ChecklistApp.", color=TEXT_GREY, size=12, italic=True),
@@ -593,21 +589,21 @@ def main(page: ft.Page):
                                     ),
                                     ft.Text("Where σ is stress (MPa), F is force (N), A is area (mm²), ε is strain, ΔL is change in length (m), and L is original length (m).", color=TEXT_GREY, size=13),
                                     
-                                    # Embedded Video
+                                    # Embedded Video using flet_video
                                     ft.Container(
                                         height=200,
                                         border_radius=8,
                                         clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
                                         bgcolor=PRIMARY_BLUE,
-                                        content=ft.Video(
-                                            playlist=ft.VideoMedia(
-                                                src="https://www.youtube.com/watch?v=PtF7BlK0vKw",
-                                                title="Rock Mechanics in Mining Engineering"
-                                            ),
-                                            autoplay=False,
-                                            show_controls=True,
-                                            aspect_ratio=16/9,
+                                        content=ftv.Video(
                                             expand=True,
+                                            autoplay=False,
+                                            playlist=[
+                                                ftv.VideoMedia(
+                                                    "assets/video/rock_mechanics.mp4"  # Place your video file here
+                                                )
+                                            ],
+                                            show_controls=True,
                                         ),
                                     ),
                                 ],
@@ -632,21 +628,21 @@ def main(page: ft.Page):
                                     ),
                                     ft.Text("Risk assessment involves identifying hazards, evaluating risks, implementing controls, and monitoring effectiveness for continuous improvement.", color=TEXT_GREY, size=13),
                                     
-                                    # Embedded Video
+                                    # Embedded Video using flet_video
                                     ft.Container(
                                         height=200,
                                         border_radius=8,
                                         clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
                                         bgcolor=PRIMARY_BLUE,
-                                        content=ft.Video(
-                                            playlist=ft.VideoMedia(
-                                                src="https://www.youtube.com/watch?v=wXhOgK4KiRw",
-                                                title="Safety Management in Mining Operations"
-                                            ),
-                                            autoplay=False,
-                                            show_controls=True,
-                                            aspect_ratio=16/9,
+                                        content=ftv.Video(
                                             expand=True,
+                                            autoplay=False,
+                                            playlist=[
+                                                ftv.VideoMedia(
+                                                    "assets/video/safety_management.mp4"  # Place your video file here
+                                                )
+                                            ],
+                                            show_controls=True,
                                         ),
                                     ),
                                 ],
@@ -1190,8 +1186,7 @@ if __name__ == "__main__":
         ft.app(
             target=main,
             host="0.0.0.0",  # Listen on all interfaces for Render
-            port=PORT,
-            view=ft.AppView.WEB_BROWSER,
+            port=8551,
             assets_dir="assets",
         )
     except Exception as e:
