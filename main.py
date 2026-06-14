@@ -516,7 +516,7 @@ def main(page: ft.Page):
                                     expand=True,
                                     playlist=[
                                         ftv.VideoMedia(
-                                            "assets/video/reflection-video.mp4.mp4"  # Your video file path
+                                            "assets/video/reflection-video.mp4"  # Your video file path
                                         )
                                     ],
                                     playlist_mode=ftv.PlaylistMode.LOOP,
