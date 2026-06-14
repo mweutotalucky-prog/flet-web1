@@ -471,7 +471,7 @@ def main(page: ft.Page):
         ),
     )
 
-    # 6. Technical Blog Section with videos using flet_video
+    # 6. Technical Blog Section - Single Video Section
     blog_section = ft.Container(
         key="blog",
         bgcolor=LIGHT_BG,
@@ -481,7 +481,7 @@ def main(page: ft.Page):
             controls=[
                 create_section_header("TECHNICAL BLOG: MINING ENGINEERING CONCEPTS", "Written technical explanations with embedded video content."),
                 
-                # First Blog Post with Video
+                # Blog Post with Video
                 ft.Container(
                     bgcolor=BG_WHITE,
                     padding=22,
@@ -490,20 +490,25 @@ def main(page: ft.Page):
                     content=ft.Column(
                         spacing=12,
                         controls=[
-                            ft.Text("Mine Ventilation Principles", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_TEAL),
-                            ft.Text("Proper airflow management is critical for underground mine safety, controlling dust, temperature, and hazardous gas concentrations.", color=TEXT_GREY, size=13),
+                            ft.Text("Project Management & Leadership Reflection", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_TEAL),
+                            ft.Text("As the Project Manager for Group6 ChecklistApp, I led a 16-member team in developing a mobile task management and safety checklist application. This video reflects on my leadership journey, challenges faced, and lessons learned throughout the semester project.", color=TEXT_GREY, size=13),
                             ft.Container(
                                 bgcolor=LIGHT_BG,
                                 padding=14,
                                 border_radius=6,
-                                content=ft.Text("Q = A × v   |   P = ρ × g × h", font_family="monospace", size=14, color=PRIMARY_BLUE),
+                                content=ft.Column([
+                                    ft.Text("KEY LEADERSHIP INSIGHTS:", size=11, weight=ft.FontWeight.BOLD, color=DEEP_SLATE),
+                                    ft.Text("• Effective communication across diverse team skills", size=12, color=PRIMARY_BLUE),
+                                    ft.Text("• Structured task allocation and progress tracking", size=12, color=PRIMARY_BLUE),
+                                    ft.Text("• GitHub workflow management for 16 contributors", size=12, color=PRIMARY_BLUE),
+                                    ft.Text("• Balancing technical and managerial responsibilities", size=12, color=PRIMARY_BLUE),
+                                ])
                             ),
-                            ft.Text("Where Q is airflow (m³/s), A is cross-sectional area (m²), v is air velocity (m/s), P is pressure (Pa), ρ is air density (kg/m³), g is gravity (m/s²), and h is height difference (m).", color=TEXT_GREY, size=13),
                             
-                            # Embedded Video using flet_video
+                            # Embedded Video - Using your reflection video
                             ft.Container(
-                                height=315,
-                                width=560,
+                                height=400,
+                                width=700,
                                 border_radius=8,
                                 clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
                                 bgcolor=PRIMARY_BLUE,
@@ -512,143 +517,23 @@ def main(page: ft.Page):
                                     autoplay=False,
                                     playlist=[
                                         ftv.VideoMedia(
-                                            "assets/video/mine_ventilation.mp4"  # Place your video file here
+                                            "assets/video/reflection-video.mp4.mp4"  # Your video file
                                         )
                                     ],
                                     show_controls=True,
                                 ),
                             ),
-                            ft.Text("Watch this video to understand how mine ventilation systems work and why they're crucial for underground safety.", color=TEXT_GREY, size=12, italic=True),
-                        ],
-                    ),
-                ),
-                
-                # Second Blog Post with Video
-                ft.Container(
-                    bgcolor=BG_WHITE,
-                    padding=22,
-                    border_radius=8,
-                    border=get_uniform_border(1, BORDER_COLOR),
-                    content=ft.Column(
-                        spacing=12,
-                        controls=[
-                            ft.Text("Software Testing for Safety Systems", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_TEAL),
-                            ft.Text("In the ChecklistApp project, structured testing methodologies ensured that safety checklists functioned correctly under various conditions.", color=TEXT_GREY, size=13),
-                            ft.Container(
-                                bgcolor=LIGHT_BG,
-                                padding=14,
-                                border_radius=6,
-                                content=ft.Text("Test Coverage = (Lines Tested / Total Lines) × 100%", font_family="monospace", size=14, color=PRIMARY_BLUE),
-                            ),
-                            ft.Text("Comprehensive testing strategies include unit testing, integration testing, user acceptance testing, and regression testing for reliable safety features.", color=TEXT_GREY, size=13),
+                            ft.Text("Watch this reflection video to understand my project management journey with the Group6 ChecklistApp team.", color=TEXT_GREY, size=12, italic=True),
                             
-                            # Embedded Video using flet_video
-                            ft.Container(
-                                height=315,
-                                width=560,
-                                border_radius=8,
-                                clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
-                                bgcolor=PRIMARY_BLUE,
-                                content=ftv.Video(
-                                    expand=True,
-                                    autoplay=False,
-                                    playlist=[
-                                        ftv.VideoMedia(
-                                            "assets/video/software_testing.mp4"  # Place your video file here
-                                        )
-                                    ],
-                                    show_controls=True,
-                                ),
+                            ft.Divider(color=BORDER_COLOR),
+                            
+                            ft.Text(
+                                "The ChecklistApp project taught me invaluable lessons about team coordination, stakeholder management, and technical leadership. By implementing structured communication protocols and rigorous version control practices, we successfully delivered a functional mobile application that meets safety checklist requirements for mining operations.",
+                                color=TEXT_GREY,
+                                size=13,
                             ),
-                            ft.Text("Learn about software testing methodologies essential for safety-critical applications like the ChecklistApp.", color=TEXT_GREY, size=12, italic=True),
                         ],
                     ),
-                ),
-                
-                # Third Blog Post with Video
-                ft.ResponsiveRow(
-                    spacing=20,
-                    run_spacing=20,
-                    controls=[
-                        ft.Container(
-                            col={"sm": 12, "md": 6},
-                            bgcolor=BG_WHITE,
-                            padding=22,
-                            border_radius=8,
-                            border=get_uniform_border(1, BORDER_COLOR),
-                            content=ft.Column(
-                                spacing=12,
-                                controls=[
-                                    ft.Text("Rock Mechanics Fundamentals", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_TEAL),
-                                    ft.Text("Understanding rock behavior under stress is essential for designing safe underground excavations and preventing collapses.", color=TEXT_GREY, size=13),
-                                    ft.Container(
-                                        bgcolor=LIGHT_BG,
-                                        padding=14,
-                                        border_radius=6,
-                                        content=ft.Text("σ = F/A  |  ε = ΔL/L", font_family="monospace", size=14, color=PRIMARY_BLUE),
-                                    ),
-                                    ft.Text("Where σ is stress (MPa), F is force (N), A is area (mm²), ε is strain, ΔL is change in length (m), and L is original length (m).", color=TEXT_GREY, size=13),
-                                    
-                                    # Embedded Video using flet_video
-                                    ft.Container(
-                                        height=200,
-                                        border_radius=8,
-                                        clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
-                                        bgcolor=PRIMARY_BLUE,
-                                        content=ftv.Video(
-                                            expand=True,
-                                            autoplay=False,
-                                            playlist=[
-                                                ftv.VideoMedia(
-                                                    "assets/video/rock_mechanics.mp4"  # Place your video file here
-                                                )
-                                            ],
-                                            show_controls=True,
-                                        ),
-                                    ),
-                                ],
-                            ),
-                        ),
-                        ft.Container(
-                            col={"sm": 12, "md": 6},
-                            bgcolor=BG_WHITE,
-                            padding=22,
-                            border_radius=8,
-                            border=get_uniform_border(1, BORDER_COLOR),
-                            content=ft.Column(
-                                spacing=12,
-                                controls=[
-                                    ft.Text("Safety Management Systems", size=18, weight=ft.FontWeight.BOLD, color=ACCENT_TEAL),
-                                    ft.Text("Implementing effective safety management systems reduces workplace incidents and improves operational efficiency.", color=TEXT_GREY, size=13),
-                                    ft.Container(
-                                        bgcolor=LIGHT_BG,
-                                        padding=14,
-                                        border_radius=6,
-                                        content=ft.Text("Risk Score = Probability × Severity", font_family="monospace", size=14, color=PRIMARY_BLUE),
-                                    ),
-                                    ft.Text("Risk assessment involves identifying hazards, evaluating risks, implementing controls, and monitoring effectiveness for continuous improvement.", color=TEXT_GREY, size=13),
-                                    
-                                    # Embedded Video using flet_video
-                                    ft.Container(
-                                        height=200,
-                                        border_radius=8,
-                                        clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
-                                        bgcolor=PRIMARY_BLUE,
-                                        content=ftv.Video(
-                                            expand=True,
-                                            autoplay=False,
-                                            playlist=[
-                                                ftv.VideoMedia(
-                                                    "assets/video/safety_management.mp4"  # Place your video file here
-                                                )
-                                            ],
-                                            show_controls=True,
-                                        ),
-                                    ),
-                                ],
-                            ),
-                        ),
-                    ],
                 ),
             ],
         ),
