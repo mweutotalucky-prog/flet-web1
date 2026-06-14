@@ -1,3 +1,6 @@
+# ==========================================
+# STEP 1: All imports belong at the very top
+# ==========================================
 import os
 import flet as ft
 import flet_video as ftv
@@ -470,7 +473,7 @@ def main(page: ft.Page):
         ),
     )
 
-    # 6. Technical Blog Section - Single Video Section (FIXED)
+    # 6. Technical Blog Section - Single Video Section (FIXED SYNTAX)
     blog_section = ft.Container(
         key="blog",
         bgcolor=LIGHT_BG,
@@ -504,7 +507,7 @@ def main(page: ft.Page):
                                 ])
                             ),
                             
-                            # Embedded Video - Using flet_video with correct attributes
+                            # Embedded Video with proper syntax - no trailing text after parenthesis
                             ft.Container(
                                 height=400,
                                 width=None,
@@ -516,7 +519,7 @@ def main(page: ft.Page):
                                     expand=True,
                                     playlist=[
                                         ftv.VideoMedia(
-                                            "assets/video/reflection-video.mp4"  # Your video file path
+                                            "assets/video/reflection-video.mp4.mp4"
                                         )
                                     ],
                                     playlist_mode=ftv.PlaylistMode.LOOP,
@@ -1073,6 +1076,9 @@ def main(page: ft.Page):
         )
     )
 
+# =========================================================
+# RUN THE APPLICATION
+# =========================================================
 if __name__ == "__main__":
     try:
         ft.app(
